@@ -42,7 +42,7 @@ function Dashboard() {
           <input
             key={index}
             autoFocus
-            className="px-2 py-1 bg-slate-700 rounded text-white absolute -translate-x-1/2 -translate-y-1/2 cursor-none"
+            className="px-2 py-1 w-64 bg-slate-700 rounded text-white absolute -translate-x-1/2 -translate-y-1/2 cursor-none"
             style={{ left: item.position?.x, top: item.position?.y }}
             value={item?.value}
             onChange={(e) => {
