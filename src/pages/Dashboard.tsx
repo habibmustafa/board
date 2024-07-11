@@ -27,7 +27,7 @@ const Dashboard: React.FC = () => {
           data?.map((user: any, index: number) => (
             <TextArea
               key={index}
-              label={user.id}
+              label={`${user.id} ${user.id === deviceId ? "- You" : ""}`}
               value={user?.value || ""}
               position={user.position || { x: 0, y: 0 }}
               onChange={(value) => updateValue(value)}

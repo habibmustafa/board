@@ -46,7 +46,7 @@ const TextArea: React.FC<TextAreaTypes> = ({
         )}px`,
       }}
     >
-      <label className="font-medium text-xs">{label}</label>
+      <label className="font-medium text-xs text-black/80">{label}</label>
       <textarea
         ref={textAreaRef}
         rows={1}
