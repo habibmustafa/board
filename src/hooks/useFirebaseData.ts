@@ -9,7 +9,7 @@ export const useFirebaseData = (deviceId: string | null) => {
     // Fetch initial data
     onValue(ref(db, "/connection/"), (snapshot) => {
       if (snapshot.exists()) {
-        setData(Object.values(snapshot.exportVal()));
+        setData(Object.values(snapshot.val()));
       } else {
         setData([]);
       }
@@ -19,6 +19,11 @@ export const useFirebaseData = (deviceId: string | null) => {
   useEffect(() => {
     if (!deviceId) return;
     const connectionRef = ref(db, "/connection/" + deviceId);
+    set(connectionRef, {
+      id: deviceId,
+      position: { x: 0, y: 0 },
+      value: "",
+    });
 
     // Handle disconnect
     onDisconnect(connectionRef).remove();
