@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { onDisconnect, onValue, ref, set } from "firebase/database";
+import { onChildAdded, onDisconnect, onValue, ref, set } from "firebase/database";
 import { db } from "src/firebase";
 
 export const useFirebaseData = (deviceId: string | null) => {
   const [data, setData] = useState<any>(null);
 
+  
   useEffect(() => {
-    // Fetch initial data
     onValue(ref(db, "/connection/"), (snapshot) => {
       if (snapshot.exists()) {
         setData(Object.values(snapshot.val()));
@@ -18,6 +18,23 @@ export const useFirebaseData = (deviceId: string | null) => {
 
   useEffect(() => {
     if (!deviceId) return;
+    // Fetch initial data
+    onChildAdded(ref(db, "/connection/"), (snapshot) => {
+      if (snapshot.exists() && snapshot.key !== deviceId) {
+          console.log(snapshot.key)
+          Notification.requestPermission().then(permission => {
+            if (permission === "granted") {
+              new Notification("Yeni Bildirim", {
+                body: "yeni user",
+              });
+            } else {
+              console.log("Bildirim izni reddedildi.");
+            }
+          });
+  
+        }
+      })
+      
     const connectionRef = ref(db, "/connection/" + deviceId);
     set(connectionRef, {
       id: deviceId,
