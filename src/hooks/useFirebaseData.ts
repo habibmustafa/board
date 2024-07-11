@@ -18,19 +18,23 @@ export const useFirebaseData = (deviceId: string | null) => {
 
   useEffect(() => {
     if (!deviceId) return;
+
+    
+
     // Fetch initial data
     onChildAdded(ref(db, "/connection/"), (snapshot) => {
+      console.log(1)
       if (snapshot.exists() && snapshot.key !== deviceId) {
           console.log(snapshot.key)
-          Notification.requestPermission().then(permission => {
-            if (permission === "granted") {
-              new Notification("Yeni Bildirim", {
-                body: "yeni user",
-              });
-            } else {
-              console.log("Bildirim izni reddedildi.");
-            }
-          });
+          // Notification.requestPermission().then(permission => {
+          //   if (permission === "granted") {
+          //     new Notification("Adam gəldi", {
+          //       body: `ID: ${snapshot.key}`,
+          //     });
+          //   } else {
+          //     console.log("Bildirim izni reddedildi.");
+          //   }
+          // });
   
         }
       })
