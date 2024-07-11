@@ -50,7 +50,7 @@ const TextArea: React.FC<TextAreaTypes> = ({
       <textarea
         ref={textAreaRef}
         rows={1}
-        className="px-2 py-1 w-64 resize-none bg-slate-700 rounded text-white"
+        className="px-2 py-1 w-64 resize-none bg-slate-700 rounded text-white cursor-none"
         value={value}
         onChange={(e) => onChange(e.target.value)}
         {...props}
