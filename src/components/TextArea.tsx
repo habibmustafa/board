@@ -46,11 +46,11 @@ const TextArea: React.FC<TextAreaTypes> = ({
         )}px`,
       }}
     >
-      <label className="font-medium text-xs text-black/80">{label}</label>
+      <label className="font-medium text-xs text-white/80">{label}</label>
       <textarea
         ref={textAreaRef}
         rows={1}
-        className="px-2 py-1 w-64 resize-none bg-slate-700 rounded text-white cursor-none"
+        className="px-2 py-1 w-64 resize-none bg-neutral-600 font-medium rounded text-white cursor-none"
         value={value}
         onChange={(e) => onChange(e.target.value)}
         {...props}

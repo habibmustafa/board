@@ -22,7 +22,7 @@ const Dashboard: React.FC = () => {
         <title>{`Board - ${data?.length || 1}`}</title>
       </Helmet>
 
-      <div className="h-screen overflow-hidden relative bg-neutral-100">
+      <div className="h-screen overflow-hidden relative bg-neutral-900">
         {deviceId &&
           data?.map((user: any, index: number) =>
             user.id ? (
@@ -30,7 +30,7 @@ const Dashboard: React.FC = () => {
                 key={index}
                 label={`${user.id} ${user.id === deviceId ? "- You" : ""}`}
                 value={user?.value || ""}
-                position={user.position || { x: 0, y: 0 }}
+                position={user.position}
                 onChange={(value) => updateValue(value)}
                 autoFocus={user.id === deviceId}
               />
