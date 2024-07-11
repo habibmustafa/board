@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 
-interface TextAreaTypes {
+interface TextAreaTypes
+  extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, "onChange"> {
   label: string;
   value: string;
   position: { x: number; y: number };
@@ -12,6 +13,7 @@ const TextArea: React.FC<TextAreaTypes> = ({
   value,
   position,
   onChange,
+  ...props
 }) => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -32,7 +34,7 @@ const TextArea: React.FC<TextAreaTypes> = ({
 
   return (
     <div
-      className="flex flex-col gap-1 absolute -translate-x-1/2 -translate-y-1/2 "
+      className="flex flex-col gap-1 absolute -translate-x-1/2 -translate-y-1/2 cursor-not-allowed focus-within:z-10"
       style={{
         left: `${Math.max(
           left,
@@ -47,11 +49,11 @@ const TextArea: React.FC<TextAreaTypes> = ({
       <label className="font-medium text-xs">{label}</label>
       <textarea
         ref={textAreaRef}
-        autoFocus
         rows={1}
-        className="px-2 py-1 w-64 resize-none bg-slate-700 rounded text-white cursor-none"
+        className="px-2 py-1 w-64 resize-none bg-slate-700 rounded text-white"
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        {...props}
       />
     </div>
   );
