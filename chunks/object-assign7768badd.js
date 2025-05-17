@@ -1,0 +1,5 @@
+function u(r){return r&&r.__esModule&&Object.prototype.hasOwnProperty.call(r,"default")?r.default:r}/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/var f=Object.getOwnPropertySymbols,l=Object.prototype.hasOwnProperty,b=Object.prototype.propertyIsEnumerable;function i(r){if(r==null)throw new TypeError("Object.assign cannot be called with null or undefined");return Object(r)}function p(){try{if(!Object.assign)return!1;var r=new String("abc");if(r[5]="de",Object.getOwnPropertyNames(r)[0]==="5")return!1;for(var s={},e=0;e<10;e++)s["_"+String.fromCharCode(e)]=e;var o=Object.getOwnPropertyNames(s).map(function(t){return s[t]});if(o.join("")!=="0123456789")return!1;var n={};return"abcdefghijklmnopqrst".split("").forEach(function(t){n[t]=t}),Object.keys(Object.assign({},n)).join("")==="abcdefghijklmnopqrst"}catch{return!1}}var j=p()?Object.assign:function(r,s){for(var e,o=i(r),n,t=1;t<arguments.length;t++){e=Object(arguments[t]);for(var c in e)l.call(e,c)&&(o[c]=e[c]);if(f){n=f(e);for(var a=0;a<n.length;a++)b.call(e,n[a])&&(o[n[a]]=e[n[a]])}}return o};const O=u(j);export{u as g,O as o};
